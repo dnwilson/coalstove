@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  database: coalstove_db
+  host: localhost
+  
+test:
+  adapter: postgresql
+  database: coalstove_db
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: coalstove_db
+  host: localhost
+  
