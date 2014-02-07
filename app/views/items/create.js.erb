@@ -1,0 +1,3 @@
+$(".items").append("<%= escape_javascript(render partial: 'item', locals:{item: @item}) %>");
+$("input#item_item_name").val("");
+$("input#item_item_amount").val("");

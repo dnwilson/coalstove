@@ -1,0 +1,21 @@
+<% provide(:title, 'Items') %>
+<div class="item-input">
+	<%= minimal_form_for(@item, :validate => true, :html => {:class => 'item-form form-horizontal', :multipart => true}) do |f| %>
+		<%= render 'layouts/messages', object: f.object %>
+
+		<%= f.input :item_name, autocomplete: :off %>
+		<%= f.collection_select :category_id, Category.all, :id, :category_name, label: "Category" %>
+		<%= f.input :item_amount, autocomplete: :off %>
+		<%= f.submit "Create Item", class: "btn btn-primary", disable_with: "Saving..." %>
+	<% end %>
+</div>
+
+<div "item-list">
+	<% if @items.any? %>
+		<ol class="items">
+			<% @items.each do |item| %>
+				<%= render partial: 'item', locals: {item: item} %>
+			<% end %>
+		</ol>
+	<% end %>
+</div>

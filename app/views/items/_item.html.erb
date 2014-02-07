@@ -1,0 +1,6 @@
+<li class="item-<%= item.id %>">
+	<span class="delete"><%= link_to item, method: :delete do %>delete<% end %></span>
+	<span class="name"><%= item.item_name %></span>
+	<span class="category"><%= Category.find(item.category_id).category_name %></span>
+	<span class="amount"><%= item.item_amount %></span>
+</li>

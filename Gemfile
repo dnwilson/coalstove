@@ -3,10 +3,15 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-
+gem 'thin'
 gem 'pg'
 gem 'pg_search'
 gem 'devise'
+
+# Layout Gems
+gem 'rails_layout'
+gem 'bootstrap-sass', '~> 3.1.0'
+gem 'simple_form', '>= 3.0.0.rc'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -40,12 +45,13 @@ group :development, :test do
    gem 'spork-rails'
    gem 'guard-spork'
    gem 'childprocess'
+   gem 'forgery'
    gem 'factory_girl_rails'
    gem 'shoulda-matchers'
 end
 
 group :test do
-   gem 'capybara'
+   gem 'capybara', '~> 2.1'
    # gem 'growl'
 end
 

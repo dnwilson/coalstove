@@ -16,3 +16,6 @@ Category.create!(category_name: "Misc")
 Category.create!(category_name: "Salary")
 Category.create!(category_name: "Transportation")
 Category.create!(category_name: "Utilities")
+
+
+admin = User.create!(name: "Admin", username: "admin", email: "admin@coalstove.com", admin: true, password: "1@mDamage", password_confirmation: "1@mDamage")

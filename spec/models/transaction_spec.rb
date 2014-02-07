@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Transaction do
    let(:user){FactoryGirl.create(:user)}
    let(:item){FactoryGirl.create(:item)}
-   before{@transaction = Transaction.new(user_id: user.id,
+   before{@transaction = user.transactions.build(
       item_id: item.id,
       trans_date: "1/2/2014",
       trans_amount: 400)}
@@ -27,6 +27,15 @@ describe Transaction do
       describe "when user_id is not present" do
          before{@transaction.user_id = nil}
          it{should_not be_valid}
+      end
+
+      describe "when user is not an admin" do
+         let(:customer) { FactoryGirl.create(:user) }
+         before{@wrong_trans = customer.transactions.build(
+               item_id: item.id,
+               trans_date: "1/2/2014",
+               trans_amount: 400)}
+         it{should be_valid}
       end
       
       describe "when item_id is not present" do
