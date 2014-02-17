@@ -1,6 +1,6 @@
-<li class="item-<%= item.id %>">
-	<span class="delete"><%= link_to item, method: :delete do %>delete<% end %></span>
-	<span class="name"><%= item.item_name %></span>
-	<span class="category"><%= Category.find(item.category_id).category_name %></span>
-	<span class="amount"><%= item.item_amount %></span>
-</li>
+<tr class="item-<%= item.id %>">
+	<td class="name"><%= on_the_spot_edit item, :item_name %></td>
+	<td class="category"><%= Category.find(item.category_id).category_name %></td>
+	<td class="account"><%= acct_name(item.id) %></td>
+	<td class="amount"><%= on_the_spot_edit item, :item_amount %></td>
+</tr>

@@ -1,21 +1,46 @@
 <% provide(:title, 'Items') %>
-<div class="item-input">
-	<%= minimal_form_for(@item, :validate => true, :html => {:class => 'item-form form-horizontal', :multipart => true}) do |f| %>
-		<%= render 'layouts/messages', object: f.object %>
+<div class="page-header" id="banner" >
+	<div class="row">
+		<div class="item-input col-md-9">
+			<%= bootstrap_form_for(@item, :validate => true, :html => {:class => 'item-form inline', :multipart => true, :autocomplete => :off }) do |f| %>
+				<%= render 'layouts/messages', object: f.object %>
 
-		<%= f.input :item_name, autocomplete: :off %>
-		<%= f.collection_select :category_id, Category.all, :id, :category_name, label: "Category" %>
-		<%= f.input :item_amount, autocomplete: :off %>
-		<%= f.submit "Create Item", class: "btn btn-primary", disable_with: "Saving..." %>
-	<% end %>
-</div>
-
-<div "item-list">
-	<% if @items.any? %>
-		<ol class="items">
-			<% @items.each do |item| %>
-				<%= render partial: 'item', locals: {item: item} %>
+				<div class="row">
+					<span class="col-md-4 col-sm-12 col-xs-12">
+						<%= f.text_field :item_name, hide_label: true %>
+					</span>
+					<span class="col-md-4 col-sm-12 col-xs-12">						
+						<%= f.text_field :category_name, hide_label: true , input_html: {class: 'required form-control'}, :url => autocomplete_category_category_name_items_path, :as => :autocomplete %>
+					</span>
+					<span class="col-md-2 col-sm-12 col-xs-12">
+						<%= f.text_field :item_amount, hide_label: true %>
+					</span>
+					<span class="col-md-2 col-sm-12 col-xs-12">
+						<%= f.submit "Add Item", class: "btn btn-primary item-submit", disable_with: "Saving..." %>
+					</span>
+				</div>
 			<% end %>
-		</ol>
-	<% end %>
+
+			<div "col-md-12">
+				<table class="col-md-12 item-table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Item Name</th>
+							<th>Category</th>
+							<th>Account</th>
+							<th>Amount</th>
+						</tr>
+					</thead>					
+					<tbody class="item-list">				
+						<% if @items.any? %>
+							<% @items.each do |item| %>
+								<%= render partial: 'item', locals: {item: item} %>
+							<% end %>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="item-names col-md-3"></div>
+	</div>
 </div>

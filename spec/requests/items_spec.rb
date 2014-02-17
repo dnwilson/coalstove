@@ -39,6 +39,7 @@ describe ItemsController do
 
 		it{should have_selector(".item-input")}
 		it{should have_title('coalstove | Items')}
+		it{should have_content(:text, 'logout')}
 
 		describe "and no user entered data" do
 			before do

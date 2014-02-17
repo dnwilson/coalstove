@@ -8,7 +8,7 @@ Coalstove is a fast-food restaurant in Kingston, Jamaica specializing in home-st
 ##Phase 1
 - [ ] Build User Model for Admin Users
 - [ ] Develop Admin Back-end
-	- [ ] Log in and out
+	- [x] Log in and out
 	- [x] Create Items
 		- [x] Complete Item MVC
 		- [x] Complete Testing for Items
@@ -16,9 +16,9 @@ Coalstove is a fast-food restaurant in Kingston, Jamaica specializing in home-st
 	- [ ] Edit Items
 		- [ ] Complete Testing for Edited Items
 		- [ ] Implement jQuery Updates to Edited Item
-	- [ ] Create Transactions
+	- [x] Create Transactions
 - [ ] Build Basic Site Layout
-   	- [ ] Home Page
+   	- [x] Home Page
 	- [ ] About Page
 	- [ ] Menu Page
 	- [ ] Contact Page

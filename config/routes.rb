@@ -17,8 +17,21 @@ Coalstove::Application.routes.draw do
     get "settings", :to => "users/registrations#edit"
   end 
   
-  resources :items
-  resources :transactions
+  resources :items do
+    collection do
+      put :update_attribute_on_the_spot
+      get :get_attribute_on_the_spot
+      get :autocomplete_category_category_name
+    end
+  end
+
+  resources :transactions do  
+    collection do
+      put :update_attribute_on_the_spot
+      get :get_attribute_on_the_spot
+      get :autocomplete_item_item_name
+    end
+  end
   
   get '/about', to: 'pages#about'
   get '/menu', to: 'pages#menu'

@@ -1,0 +1,44 @@
+<% provide(:title, 'Transactions') %>
+<div class="page-header" id="banner">
+	<div class="row">
+		<div class="trans-input col-md-9">
+			<%= bootstrap_form_for(@transaction, :validate => true, :html => {:class => "trans-form form-inline", :multipart => true, :autocomplete => :off }) do |f| %>
+				<%= render 'layouts/messages', object: f.object %>
+				<div class="row">
+					<div class="col-md-3 col-sm-12 col-xs-12">
+						<%= f.text_field :trans_date, as: :string, hide_label: true, input_html: {id: 'datepicker'} %>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12">
+						<%= f.text_field :item_name, hide_label: true,  :url => autocomplete_item_item_name_transactions_path, :as => :autocomplete %>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12">
+						<%= f.text_field :trans_amount, hide_label: true %>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12">
+						<%= f.submit "Add Invoice", class: "btn btn-primary trans-submit", disable_with: "Saving..." %>
+					</div>
+				</div>				
+			<% end %>
+		</div>
+		<div class="col-md-9">
+			<table class="col-md-12 transaction-table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Item Name</th>
+						<th>Category</th>
+						<th>Account</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody "trans-list-items">
+					<% if @transactions.any? %>			
+						<% @transactions.each do |trans| %>
+							<%= render partial: 'transaction', locals: {trans: trans} %>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

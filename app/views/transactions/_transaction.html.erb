@@ -1,0 +1,7 @@
+<tr class="trans-<%= trans.id %>">
+	<td class="date"><%= trans.trans_date %></td>
+	<td class="name"><%= Item.find(trans.item_id).item_name %></td>
+	<td class="category"><%= Category.find(Item.find(trans.item_id).category_id).category_name %></td>
+	<td class="account"><%= acct_name(trans.item_id) %></td>
+	<td class="amount"><%= on_the_spot_edit trans, :trans_amount %></td>
+</tr>

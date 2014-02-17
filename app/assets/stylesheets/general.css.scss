@@ -1,0 +1,47 @@
+.navbar-inverse .navbar-brand{
+	font-size: 24px;
+	color: #fff;
+	&:hover{
+		color: #ccc;
+		cursor: pointer;
+	}
+}
+.navbar{
+  margin-bottom: 20px;
+}
+.carousel-fade {
+  .carousel-inner {
+    .item {
+      opacity: 0;
+      -webkit-transition-property: opacity;
+      -moz-transition-property: opacity;
+      -o-transition-property: opacity;
+      transition-property: opacity;
+    }
+
+    .active {
+      opacity: 1;
+    }
+
+    .active.left,
+    .active.right {
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .next.left,
+    .prev.right {
+      opacity: 1;
+    }
+  }
+
+  .carousel-control {
+    z-index: 2;
+  }
+}
+
+.page-header{
+  padding-bottom: 9.5px;
+  margin: 62px 0 21px;
+}

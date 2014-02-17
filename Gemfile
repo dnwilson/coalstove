@@ -12,6 +12,10 @@ gem 'devise'
 gem 'rails_layout'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'simple_form', '>= 3.0.0.rc'
+gem 'bootstrap_form'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+gem 'on_the_spot'
+gem 'rails4-autocomplete'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -26,7 +30,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.3.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

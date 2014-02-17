@@ -1,5 +1,16 @@
 <%# add navigation links to this file %>
-<%= link_to "about", about_path %>
-<%= link_to "menu", menu_path %>
-<%= link_to "contact", contact_path %>
-<%= link_to "login", login_path %>
+<li><%= link_to "about", about_path %></li>
+<li><%= link_to "menu", menu_path %></li>
+<li><%= link_to "contact", contact_path %></li>
+<% if signed_in? %>
+	<li id="fat-menu" class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="profileMenu">
+			<li role="presentation"><%= link_to "Add New Item", new_item_path %></li>
+			<li role="presentation"><%= link_to "Add New Invoice", new_transaction_path %></li>
+			<li role="presentation"><%= link_to "logout", logout_path %></li>
+		</ul>
+	</li>
+<% else %>
+	<li><%= link_to "login", login_path %></li>
+<% end %>

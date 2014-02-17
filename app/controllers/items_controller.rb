@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
    before_filter :signed_in?, only: [:create, :destroy]
    before_filter :verify_is_admin
 
+   can_edit_on_the_spot
+   autocomplete :category, :category_name
+
    def new
       if current_user.admin?
          @item = Item.new
@@ -10,6 +13,10 @@ class ItemsController < ApplicationController
       else
          flash[:notice] = "You do not have permission to carry out this function"
       end
+   end
+
+   def index
+      @items = Items.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}"])
    end
    
    def create
@@ -55,7 +62,7 @@ class ItemsController < ApplicationController
    private
    
       def item_params
-         params.require(:item).permit(:item_name, :category_id, :item_amount)
+         params.require(:item).permit(:item_name, :category_id, :item_amount, :category_name)
       end
 
       def verify_is_admin

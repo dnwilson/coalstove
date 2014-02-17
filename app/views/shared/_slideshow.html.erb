@@ -1,0 +1,10 @@
+<div id="coalstove-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <% Dir["app/assets/images/slideshow/*"].each_with_index do |item, index| %>
+		<div class="item <%= 'active' if index == 0 %>">
+	      <%= image_tag("slideshow/#{File.basename(item)}", :alt => "#{File.basename(item)}") %>
+	    </div>
+    <% end %>
+  </div>
+</div>

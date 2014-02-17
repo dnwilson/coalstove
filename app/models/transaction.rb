@@ -1,8 +1,8 @@
 class Transaction < ActiveRecord::Base
    
    belongs_to :user
-   has_many :item_transactions, :dependent => :destroy
-   has_many :items, :through => :item_transactions
+   has_many :itemizations, :dependent => :destroy
+   belongs_to :item #, :through => :itemization
    
    # date_regex = /\d{2}\/d{2}\/\d{4}/
    validates_presence_of :user_id, message: "You must be logged in to enter a transaction"
@@ -19,4 +19,13 @@ class Transaction < ActiveRecord::Base
    def validate_date_format
       self.errors[:trans_date] << "must be a valid date" unless Date.parse(self.trans_date) rescue false
    end
+
+   def item_name
+      item.try(:name)
+   end
+
+   def item_name=(name)
+      self.item = Item.find_or_create_by_item_name!(name) unless name.blank?
+   end
+   
 end

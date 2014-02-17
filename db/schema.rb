@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 20140205213451) do
     t.integer "position"
   end
 
+  create_table "itemizations", force: true do |t|
+    t.integer "item_id"
+    t.integer "transaction_id"
+    t.integer "position"
+  end
+
   create_table "items", force: true do |t|
     t.string   "item_name"
     t.integer  "item_amount", default: 0
@@ -56,10 +62,9 @@ ActiveRecord::Schema.define(version: 20140205213451) do
   add_index "items", ["id", "category_id"], name: "index_items_on_id_and_category_id", using: :btree
   add_index "items", ["item_name"], name: "index_items_on_item_name", unique: true, using: :btree
 
-  create_table "itemtransaction", force: true do |t|
-    t.integer "item_id"
+  create_table "items_transactions", id: false, force: true do |t|
     t.integer "transaction_id"
-    t.integer "position"
+    t.integer "item_id"
   end
 
   create_table "menus", force: true do |t|
